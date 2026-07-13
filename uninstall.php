@@ -1,14 +1,13 @@
 <?php
 /**
- * Uninstall routine for W3TC WebP Helper.
+ * Uninstall routine for WebP Delivery Helper for W3TC.
  *
  * Called automatically by WordPress when the plugin is deleted via the admin UI.
  * This plugin stores no options or custom database tables, so no cleanup is required.
  *
- * @package W3tcWebpHelper
+ * @package WebPDeliveryHelperForW3TC
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	die();
 }
-

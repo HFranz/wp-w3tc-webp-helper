@@ -2,7 +2,7 @@
 /**
  * Content filter for WebP URL replacement.
  *
- * @package W3tcWebpHelper
+ * @package WebPDeliveryHelperForW3TC
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -148,7 +148,7 @@ class W3TC_WebP_Content_Filter {
 		while ( $position < $length ) {
 			// 1. Skip leading whitespace and commas (separators between candidates).
 			while ( $position < $length && ( ',' === $srcset[ $position ] || ctype_space( $srcset[ $position ] ) ) ) {
-				$position++;
+				++$position;
 			}
 
 			if ( $position >= $length ) {
@@ -158,7 +158,7 @@ class W3TC_WebP_Content_Filter {
 			// 2. Collect URL: everything up to the next whitespace (commas in path/query are kept).
 			$url_start = $position;
 			while ( $position < $length && ! ctype_space( $srcset[ $position ] ) ) {
-				$position++;
+				++$position;
 			}
 			$url = rtrim( substr( $srcset, $url_start, $position - $url_start ), ',' );
 
@@ -170,7 +170,7 @@ class W3TC_WebP_Content_Filter {
 			$descriptors = array();
 			while ( $position < $length ) {
 				while ( $position < $length && ctype_space( $srcset[ $position ] ) ) {
-					$position++;
+					++$position;
 				}
 
 				if ( $position >= $length ) {
@@ -178,13 +178,13 @@ class W3TC_WebP_Content_Filter {
 				}
 
 				if ( ',' === $srcset[ $position ] ) {
-					$position++;
+					++$position;
 					break;
 				}
 
 				$token_start = $position;
 				while ( $position < $length && ! ctype_space( $srcset[ $position ] ) && ',' !== $srcset[ $position ] ) {
-					$position++;
+					++$position;
 				}
 				$descriptors[] = substr( $srcset, $token_start, $position - $token_start );
 			}
@@ -196,4 +196,3 @@ class W3TC_WebP_Content_Filter {
 		return implode( ', ', $result );
 	}
 }
-

@@ -2,7 +2,7 @@
 /**
  * Accept header detection for WebP support.
  *
- * @package W3tcWebpHelper
+ * @package WebPDeliveryHelperForW3TC
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -65,4 +65,3 @@ class W3TC_WebP_Accept_Header {
 		return false;
 	}
 }
-

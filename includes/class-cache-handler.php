@@ -2,7 +2,7 @@
 /**
  * Cache handler for WebP-aware page caching.
  *
- * @package W3tcWebpHelper
+ * @package WebPDeliveryHelperForW3TC
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -66,4 +66,3 @@ class W3TC_WebP_Cache_Handler {
 		return $key . ( $supports_webp ? ':webp' : ':no-webp' );
 	}
 }
-

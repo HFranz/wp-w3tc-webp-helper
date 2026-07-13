@@ -48,4 +48,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: w3tc-webp-helper
+          SLUG: webp-delivery-helper-for-w3tc
