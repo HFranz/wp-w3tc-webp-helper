@@ -84,6 +84,14 @@ function plugin_dir_path( string $file ): string {
 	return rtrim( dirname( $file ), '/\\' ) . '/';
 }
 
+function wp_unslash( mixed $value ): mixed {
+	return is_string( $value ) ? stripslashes( $value ) : $value;
+}
+
+function sanitize_text_field( string $str ): string {
+	return trim( preg_replace( '/[\r\n\t ]+/', ' ', strip_tags( $str ) ) );
+}
+
 // ---------------------------------------------------------------------------
 // Configurable stub data store
 // ---------------------------------------------------------------------------
@@ -143,6 +151,6 @@ class WPTestStub {
 // Simulate W3TC as active and fire plugins_loaded so the guard takes effect.
 const W3TC = true;
 
-require_once dirname( __DIR__ ) . '/w3tc-webp-helper.php';
+require_once dirname( __DIR__ ) . '/wp-w3tc-webp-helper.php';
 
 do_action( 'plugins_loaded' );

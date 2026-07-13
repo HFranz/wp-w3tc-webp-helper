@@ -28,7 +28,8 @@ class W3TC_WebP_Content_Filter {
 	 * @return string Filtered content.
 	 */
 	public function filter( string $content ): string {
-		if ( empty( $_SERVER['HTTP_ACCEPT'] ) || ! W3TC_WebP_Accept_Header::accepts( $_SERVER['HTTP_ACCEPT'] ) ) {
+		$accept = isset( $_SERVER['HTTP_ACCEPT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT'] ) ) : '';
+		if ( '' === $accept || ! W3TC_WebP_Accept_Header::accepts( $accept ) ) {
 			return $content;
 		}
 

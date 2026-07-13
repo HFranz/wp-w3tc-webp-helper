@@ -60,8 +60,8 @@ class W3TC_WebP_Cache_Handler {
 	 * @return string Extended cache key.
 	 */
 	public function extend_cache_key( string $key ): string {
-		$supports_webp = ! empty( $_SERVER['HTTP_ACCEPT'] )
-			&& W3TC_WebP_Accept_Header::accepts( $_SERVER['HTTP_ACCEPT'] );
+		$accept        = isset( $_SERVER['HTTP_ACCEPT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT'] ) ) : '';
+		$supports_webp = '' !== $accept && W3TC_WebP_Accept_Header::accepts( $accept );
 
 		return $key . ( $supports_webp ? ':webp' : ':no-webp' );
 	}
